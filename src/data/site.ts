@@ -548,3 +548,33 @@ export const privacy = {
     },
   ],
 };
+
+// ---------------------------------------------------------------------------
+// Photography (files in /public/images). Captions state only what is visible in the photo.
+// Confirm the team's consent to publish these photographs before launch.
+// ---------------------------------------------------------------------------
+export type Photo = { src: string; alt: string; caption: string; width: number; height: number };
+const photo = (file: string, alt: string, caption: string, width = 2000, height = 1333): Photo => ({ src: `/images/${file}.jpg`, alt, caption, width, height });
+
+export const photos = {
+  team: photo("team-group", "The team of Singh Amit & Associates seated together on the office terrace", "The team of Singh Amit & Associates"),
+  corridor: photo("office-corridor", "Open-plan office corridor with workstations and indoor plants", "The firm's office"),
+  desk: photo("office-desk", "Two associates reviewing documents at a desk", "Associates reviewing documents"),
+  workstations: photo("office-workstations", "Accounts and compliance workstations in the office", "Accounts and compliance team at work"),
+  meeting: photo("meeting-room", "CA Amit Singh with team members around the conference table", "Team review meeting"),
+  meeting2: photo("meeting-room-2", "Team members taking notes at a meeting in the conference room", "Team members in a working session"),
+  training: photo("training-session", "A team member presenting at an internal training session", "Internal training session at the office"),
+  diwaliSeated: photo("diwali-team-seated", "Team members seated together at the Diwali celebration", "Diwali celebration with the team"),
+  diwaliVenue: photo("diwali-venue", "Terrace venue decorated for the team's Diwali celebration", "Venue for the team's Diwali celebration", 1920, 1080),
+  diwaliTeam: photo("diwali-team-2", "Team members standing together at the Diwali celebration", "Team members at the Diwali celebration"),
+  diwaliRangoli: photo("diwali-rangoli", "Flower rangoli with lit diyas at the Diwali celebration", "Rangoli and diyas at the Diwali celebration"),
+  wofa: photo("wofa-signage", "CA Amit Singh standing in front of the WOFA 2.0 backdrop", "CA Amit Singh at WOFA 2.0, organised by the Institute of Chartered Accountants of India"),
+  founder: photo("wofa-founder", "CA Amit Singh in front of the WOFA 2.0 signage", "CA Amit Singh at WOFA 2.0"),
+};
+
+export const lifeAtFirm = {
+  eyebrow: "Life at the firm",
+  heading: "Events & Gatherings",
+  intro: "The workplace, internal training sessions, professional events and team celebrations at Singh Amit & Associates.",
+  items: [photos.wofa, photos.training, photos.diwaliSeated, photos.diwaliVenue, photos.diwaliTeam, photos.diwaliRangoli],
+};

@@ -5,25 +5,28 @@
 /* ---------------------------------------------------------------
    Colour tokens (space-separated RGB so Tailwind opacity works).
    Light is the default; dark follows the visitor's OS setting.
-   Navy and gold are fixed brand colours (see tailwind.config.ts).
+   Navy, steel and brass are fixed brand colours (see tailwind.config.ts).
+   Direction: formal and institutional: white ground, navy, hairlines, no shadows.
 ---------------------------------------------------------------- */
 :root {
-  --bg: 248 246 241;        /* #F8F6F1 off-white */
-  --surface: 255 255 255;   /* white cards */
+  --bg: 255 255 255;
+  --band: 243 245 248;      /* #F3F5F8 alternate section band */
+  --surface: 255 255 255;
   --ink: 11 31 58;          /* #0B1F3A headings */
-  --body: 74 85 104;        /* #4A5568 slate body text */
-  --line: 226 220 205;      /* hairlines */
-  --gold-text: 138 105 34;  /* #8A6922: gold dark enough for AA text on light */
+  --body: 71 85 105;        /* #475569 */
+  --muted: 91 107 130;      /* #5B6B82 secondary text, AA on white */
+  --line: 213 219 227;      /* #D5DBE3 hairlines */
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: 8 20 38;
-    --surface: 16 36 64;
-    --ink: 244 240 230;
-    --body: 176 188 205;
-    --line: 44 64 94;
-    --gold-text: 217 184 106;
+    --bg: 10 22 40;
+    --band: 14 29 51;
+    --surface: 16 31 54;
+    --ink: 242 245 249;
+    --body: 180 191 206;
+    --muted: 157 176 200;
+    --line: 42 61 90;
     color-scheme: dark;
   }
 }
@@ -35,28 +38,29 @@
     font-size: 1.0625rem;
     line-height: 1.7;
   }
-  h1, h2, h3, h4 { @apply font-display text-ink; line-height: 1.2; letter-spacing: -0.01em; }
-  :focus-visible { outline: 3px solid #C9A24A; outline-offset: 3px; border-radius: 4px; }
-  ::selection { background: #C9A24A; color: #0B1F3A; }
+  h1, h2, h3, h4 { @apply font-display font-semibold text-ink; line-height: 1.22; letter-spacing: -0.005em; }
+  :focus-visible { outline: 3px solid #3B82F6; outline-offset: 3px; border-radius: 2px; }
+  ::selection { background: #1B3558; color: #fff; }
 }
 
 @layer components {
   .section { @apply py-16 md:py-24; }
-  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold-text; }
-  .gold-rule { @apply block h-px w-16 bg-gold; }
-  .card { @apply rounded-2xl border border-line bg-surface shadow-card; }
-  .card-hover { @apply transition duration-300 hover:-translate-y-1 hover:shadow-lift; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-muted; }
+  /* The single decorative accent: a thin brass rule */
+  .brass-rule { @apply block h-[2px] w-12 bg-brass; }
+  .card { @apply rounded-sm border border-line bg-surface; }
+  .card-hover { @apply transition-colors duration-200 hover:border-ink/40; }
   .btn {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-[0.95rem] font-semibold transition duration-200;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-sm px-6 py-3 text-[0.95rem] font-semibold transition-colors duration-200;
   }
-  .btn-gold { @apply bg-gold text-navy hover:bg-[#d4b058]; }
+  .btn-light { @apply bg-white text-navy hover:bg-white/90; }
   .btn-navy { @apply bg-navy text-white hover:bg-navy-700; }
-  .btn-outline-light { @apply border border-white/40 text-white hover:border-gold hover:text-gold; }
-  .btn-outline { @apply border border-ink/30 text-ink hover:border-gold-text hover:text-gold-text; }
+  .btn-outline-light { @apply border border-white/40 text-white hover:border-white; }
+  .btn-outline { @apply border border-ink/30 text-ink hover:border-ink; }
   /* underline-slide for nav links */
   .link-slide { @apply relative; }
   .link-slide::after {
-    content: ""; @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300;
+    content: ""; @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-brass transition-transform duration-300;
   }
   .link-slide:hover::after, .link-slide[aria-current="page"]::after, .link-slide[data-open="true"]::after { @apply scale-x-100; }
 }
@@ -78,7 +82,7 @@
   .reveal, .card-hover, .link-slide::after { transition: none; }
 }
 
-.skip-link { @apply absolute left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-gold px-4 py-2 font-semibold text-navy focus:translate-y-0; }
+.skip-link { @apply absolute left-4 top-4 z-[100] -translate-y-24 rounded-sm bg-navy px-4 py-2 font-semibold text-white focus:translate-y-0; }
 
 /* Entry disclaimer: shown only with JS, and not again once accepted this session */
 .disclaimer-root { display: none; }

@@ -17,7 +17,7 @@ export default function DisclaimerPage() {
           {disclaimer.pageSections.map((s) => (
             <div key={s.heading}>
               <h2 className="text-2xl">{s.heading}</h2>
-              <span className="gold-rule mt-3" aria-hidden="true" />
+              <span className="brass-rule mt-3" aria-hidden="true" />
               {s.paragraphs.map((p) => <p key={p} className="mt-4">{p}</p>)}
             </div>
           ))}

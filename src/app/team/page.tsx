@@ -1,9 +1,10 @@
 import { CtaBand } from "@/components/Blocks";
 import { Icon } from "@/components/Icon";
 import { PageHero } from "@/components/PageHero";
+import { Photo } from "@/components/Photo";
 import { Reveal } from "@/components/Reveal";
 import { TeamCard } from "@/components/TeamCard";
-import { teamGroups, teamIntro } from "@/data/site";
+import { photos, teamGroups, teamIntro } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta(
@@ -17,6 +18,10 @@ export default function TeamPage() {
     <>
       <PageHero eyebrow={teamIntro.subheading} title={teamIntro.heading} crumbs={[{ label: "Our Team" }]} />
 
+      <div className="container pt-12 md:pt-16">
+        <Reveal><Photo photo={photos.team} ratio="aspect-[16/9] md:aspect-[21/9]" sizes="(min-width: 1240px) 1176px, 100vw" position="center 40%" priority /></Reveal>
+      </div>
+
       <section className="section pb-6">
         <div className="container">
           <p className="max-w-3xl text-lg">{teamIntro.text}</p>
@@ -26,7 +31,7 @@ export default function TeamPage() {
             {teamGroups.map((g) => (
               <li key={g.id}>
                 <a href={`#${g.id}`} className="card card-hover flex h-full items-center gap-4 p-5">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy text-gold">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-navy text-steel">
                     <Icon name={g.icon} className="h-6 w-6" />
                   </span>
                   <span>
@@ -45,7 +50,7 @@ export default function TeamPage() {
           <div className="container">
             <Reveal>
               <h2 className="text-3xl">{g.title}</h2>
-              <span className="gold-rule mt-4" aria-hidden="true" />
+              <span className="brass-rule mt-4" aria-hidden="true" />
             </Reveal>
             <ul className="mt-10 grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {g.members.map((m, i) => (

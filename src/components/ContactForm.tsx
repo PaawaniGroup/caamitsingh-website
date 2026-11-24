@@ -72,7 +72,7 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <div role="status" className="card flex flex-col items-start gap-4 p-8 md:p-10">
-        <CheckCircle2 className="h-10 w-10 text-gold-text" strokeWidth={1.5} aria-hidden="true" />
+        <CheckCircle2 className="h-10 w-10 text-muted" strokeWidth={1.5} aria-hidden="true" />
         <h3 className="text-2xl">Thank you, {values.name.split(" ")[0]}.</h3>
         <p>
           {viaEmail
@@ -86,7 +86,7 @@ export function ContactForm() {
     );
   }
 
-  const field = "mt-2 w-full rounded-xl border bg-surface px-4 py-3 text-ink placeholder:text-body/60 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40";
+  const field = "mt-2 w-full rounded-sm border bg-surface px-4 py-3 text-ink placeholder:text-body/60 focus:border-line focus:outline-none focus:ring-2 focus:ring-gold/40";
   const err = (k: keyof Fields) => (errors[k] ? "border-red-600" : "border-line");
 
   return (

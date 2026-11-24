@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { UtilityBar } from "@/components/UtilityBar";
 import { Header } from "@/components/Header";
@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { firm } from "@/data/site";
 import { organizationSchema } from "@/lib/jsonld";
 
-const display = Playfair_Display({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const display = Source_Serif_4({ subsets: ["latin"], weight: ["400", "600"], variable: "--font-display", display: "swap" });
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
 export const metadata: Metadata = {
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F8F6F1" },
-    { media: "(prefers-color-scheme: dark)", color: "#081426" },
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A1628" },
   ],
 };
 

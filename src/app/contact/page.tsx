@@ -2,8 +2,9 @@ import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { MapPlaceholder } from "@/components/MapPlaceholder";
 import { PageHero } from "@/components/PageHero";
+import { Photo } from "@/components/Photo";
 import { Reveal } from "@/components/Reveal";
-import { contact, contactPage, firm } from "@/data/site";
+import { contact, contactPage, firm, photos } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta(
@@ -15,8 +16,8 @@ export const metadata = pageMeta(
 export default function ContactPage() {
   const items = [
     { icon: MapPin, label: "Office address", body: <address className="not-italic">{contact.addressLines.map((l) => <span key={l} className="block">{l}</span>)}</address> },
-    { icon: Phone, label: "Phone", body: <a href={`tel:${contact.phoneTel}`} className="hover:text-gold-text">{contact.phoneDisplay}</a> },
-    { icon: Mail, label: "Email", body: <a href={`mailto:${contact.email}`} className="break-all hover:text-gold-text">{contact.email}</a> },
+    { icon: Phone, label: "Phone", body: <a href={`tel:${contact.phoneTel}`} className="hover:text-ink">{contact.phoneDisplay}</a> },
+    { icon: Mail, label: "Email", body: <a href={`mailto:${contact.email}`} className="break-all hover:text-ink">{contact.email}</a> },
   ];
 
   return (
@@ -31,10 +32,11 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal delay={100} className="space-y-8">
+            <Photo photo={photos.corridor} ratio="aspect-[16/9]" sizes="(min-width: 1024px) 40vw, 100vw" />
             <div className="card divide-y divide-line">
               {items.map(({ icon: I, label, body }) => (
                 <div key={label} className="flex gap-4 p-6">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy text-gold"><I className="h-5 w-5" aria-hidden="true" /></span>
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-navy text-steel"><I className="h-5 w-5" aria-hidden="true" /></span>
                   <div>
                     <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-ink">{label}</h3>
                     <div className="mt-1 text-[0.98rem]">{body}</div>
@@ -42,7 +44,7 @@ export default function ContactPage() {
                 </div>
               ))}
               <div className="flex gap-4 p-6">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy text-gold"><Clock className="h-5 w-5" aria-hidden="true" /></span>
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-navy text-steel"><Clock className="h-5 w-5" aria-hidden="true" /></span>
                 <div className="w-full">
                   <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-ink">Office hours</h3>
                   <ul className="mt-1 space-y-1 text-[0.98rem]">

@@ -8,7 +8,7 @@ export function FloatingContact() {
       <a
         href={`tel:${contact.phoneTel}`}
         aria-label="Call the office"
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-navy text-gold shadow-lift ring-1 ring-gold/50"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-navy text-steel ring-1 ring-gold/50"
       >
         <Phone className="h-5 w-5" aria-hidden="true" />
       </a>
@@ -17,7 +17,7 @@ export function FloatingContact() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp (opens in a new tab)"
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1F8F4E] text-white shadow-lift"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1F8F4E] text-white"
       >
         <MessageCircle className="h-6 w-6" aria-hidden="true" />
       </a>

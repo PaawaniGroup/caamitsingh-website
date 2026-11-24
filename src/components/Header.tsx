@@ -18,7 +18,6 @@ export function Header() {
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const megaButtonRef = useRef<HTMLButtonElement>(null);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -28,14 +27,6 @@ export function Header() {
 
   // Close menus on navigation
   useEffect(() => { closeAll(); }, [pathname, closeAll]);
-
-  // Shadow once scrolled
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Esc + outside click
   useEffect(() => {
@@ -71,7 +62,7 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className={`sticky top-0 z-50 border-b border-line bg-bg transition-shadow ${scrolled ? "shadow-card" : ""}`}
+      className="sticky top-0 z-50 border-b border-line bg-bg"
     >
       <div className="container flex h-[72px] items-center justify-between gap-6">
         <Logo />
@@ -112,7 +103,7 @@ export function Header() {
           <Link href="/contact" className="btn btn-navy hidden px-5 py-2.5 sm:inline-flex">Book a Consultation</Link>
           <button
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-line text-ink lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-sm border border-line text-ink lg:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
@@ -128,21 +119,21 @@ export function Header() {
         id="mega-menu"
         onMouseEnter={openMega}
         onMouseLeave={closeMegaSoon}
-        className={`absolute inset-x-0 top-full hidden border-b border-line bg-surface shadow-lift lg:block ${megaOpen ? "" : "!hidden"}`}
+        className={`absolute inset-x-0 top-full hidden border-b border-line bg-surface lg:block ${megaOpen ? "" : "!hidden"}`}
       >
         <div className="container grid grid-cols-3 gap-x-10 gap-y-8 py-10">
           {services.map((s) => (
             <div key={s.slug}>
               <Link href={`/services/${s.slug}`} className="group flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy text-gold">
+                <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-navy text-steel">
                   <Icon name={s.icon} className="h-5 w-5" />
                 </span>
-                <span className="font-display text-lg font-semibold text-ink group-hover:text-gold-text">{s.title}</span>
+                <span className="font-display text-lg font-semibold text-ink group-hover:text-ink">{s.title}</span>
               </Link>
-              <ul className="mt-3 space-y-1 border-l border-gold/50 pl-4">
+              <ul className="mt-3 space-y-1 border-l border-line pl-4">
                 {s.subServices.map((sub) => (
                   <li key={sub.title}>
-                    <Link href={`/services/${s.slug}#${slugify(sub.title)}`} className="block py-0.5 text-[0.92rem] text-body hover:text-gold-text">
+                    <Link href={`/services/${s.slug}#${slugify(sub.title)}`} className="block py-0.5 text-[0.92rem] text-body hover:text-ink">
                       {sub.title}
                     </Link>
                   </li>
@@ -154,7 +145,7 @@ export function Header() {
         <div className="border-t border-line bg-bg">
           <div className="container flex items-center justify-between py-3 text-sm">
             <span className="text-body">Six practice areas under one roof</span>
-            <Link href="/services" className="inline-flex items-center gap-1 font-semibold text-gold-text">
+            <Link href="/services" className="inline-flex items-center gap-1 font-semibold text-muted">
               View all services <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -182,12 +173,12 @@ export function Header() {
                 {mobileServices && (
                   <ul className="mb-3 space-y-1 pl-2">
                     <li>
-                      <Link href="/services" className="flex min-h-[44px] items-center text-[0.95rem] font-semibold text-gold-text">All services overview</Link>
+                      <Link href="/services" className="flex min-h-[44px] items-center text-[0.95rem] font-semibold text-muted">All services overview</Link>
                     </li>
                     {services.map((s) => (
                       <li key={s.slug}>
                         <Link href={`/services/${s.slug}`} className="flex min-h-[44px] items-center gap-3 text-[0.95rem] text-body">
-                          <Icon name={s.icon} className="h-5 w-5 text-gold-text" /> {s.title}
+                          <Icon name={s.icon} className="h-5 w-5 text-muted" /> {s.title}
                         </Link>
                       </li>
                     ))}
@@ -199,7 +190,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className="flex min-h-[52px] items-center border-b border-line font-display text-xl text-ink aria-[current=page]:text-gold-text"
+                className="flex min-h-[52px] items-center border-b border-line font-display text-xl text-ink aria-[current=page]:text-muted"
               >
                 {item.label}
               </Link>
