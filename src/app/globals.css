@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------
+   Colour tokens (space-separated RGB so Tailwind opacity works).
+   Light is the default; dark follows the visitor's OS setting.
+   Navy and gold are fixed brand colours (see tailwind.config.ts).
+---------------------------------------------------------------- */
+:root {
+  --bg: 248 246 241;        /* #F8F6F1 off-white */
+  --surface: 255 255 255;   /* white cards */
+  --ink: 11 31 58;          /* #0B1F3A headings */
+  --body: 74 85 104;        /* #4A5568 slate body text */
+  --line: 226 220 205;      /* hairlines */
+  --gold-text: 138 105 34;  /* #8A6922: gold dark enough for AA text on light */
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 8 20 38;
+    --surface: 16 36 64;
+    --ink: 244 240 230;
+    --body: 176 188 205;
+    --line: 44 64 94;
+    --gold-text: 217 184 106;
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+  body {
+    @apply bg-bg text-body font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  h1, h2, h3, h4 { @apply font-display text-ink; line-height: 1.2; letter-spacing: -0.01em; }
+  :focus-visible { outline: 3px solid #C9A24A; outline-offset: 3px; border-radius: 4px; }
+  ::selection { background: #C9A24A; color: #0B1F3A; }
+}
+
+@layer components {
+  .section { @apply py-16 md:py-24; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold-text; }
+  .gold-rule { @apply block h-px w-16 bg-gold; }
+  .card { @apply rounded-2xl border border-line bg-surface shadow-card; }
+  .card-hover { @apply transition duration-300 hover:-translate-y-1 hover:shadow-lift; }
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-[0.95rem] font-semibold transition duration-200;
+  }
+  .btn-gold { @apply bg-gold text-navy hover:bg-[#d4b058]; }
+  .btn-navy { @apply bg-navy text-white hover:bg-navy-700; }
+  .btn-outline-light { @apply border border-white/40 text-white hover:border-gold hover:text-gold; }
+  .btn-outline { @apply border border-ink/30 text-ink hover:border-gold-text hover:text-gold-text; }
+  /* underline-slide for nav links */
+  .link-slide { @apply relative; }
+  .link-slide::after {
+    content: ""; @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300;
+  }
+  .link-slide:hover::after, .link-slide[aria-current="page"]::after, .link-slide[data-open="true"]::after { @apply scale-x-100; }
+}
+
+/* ---------------- Motion (all disabled for reduced-motion) ---------------- */
+@keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hero-in { animation: fade-up 0.8s ease-out both; }
+.hero-in-2 { animation: fade-up 0.8s 0.12s ease-out both; }
+.hero-in-3 { animation: fade-up 0.8s 0.24s ease-out both; }
+
+/* Scroll reveal: content stays visible without JS (class "js" is set by an inline script). */
+.js .reveal:not(.in) { opacity: 0; transform: translateY(18px); }
+.reveal { transition: opacity 0.7s ease-out, transform 0.7s ease-out; transition-delay: var(--d, 0ms); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-in, .hero-in-2, .hero-in-3 { animation: none; }
+  .js .reveal:not(.in) { opacity: 1; transform: none; }
+  .reveal, .card-hover, .link-slide::after { transition: none; }
+}
+
+.skip-link { @apply absolute left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-gold px-4 py-2 font-semibold text-navy focus:translate-y-0; }
+
+/* Entry disclaimer: shown only with JS, and not again once accepted this session */
+.disclaimer-root { display: none; }
+.js:not(.saa-ok) .disclaimer-root { display: flex; }

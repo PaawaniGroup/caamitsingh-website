@@ -1,0 +1,91 @@
+import { CtaBand, SectionHeading } from "@/components/Blocks";
+import { PhotoPlaceholder } from "@/components/Decor";
+import { Icon } from "@/components/Icon";
+import { PageHero } from "@/components/PageHero";
+import { Reveal } from "@/components/Reveal";
+import { about, firm } from "@/data/site";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta(
+  "About Us | Chartered Accountants in Roorkee, Uttarakhand",
+  "About Singh Amit & Associates, a Chartered Accountancy firm in Roorkee, Uttarakhand with a multidisciplinary team of CAs, Company Secretaries and Advocates.",
+  "/about",
+);
+
+export default function AboutPage() {
+  return (
+    <>
+      <PageHero eyebrow={firm.name} title={about.heading} sub={about.subheading} crumbs={[{ label: "About Us" }]} />
+
+      <section className="section">
+        <div className="container grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-20">
+          <Reveal className="space-y-5">
+            {about.paragraphs.map((p) => <p key={p}>{p}</p>)}
+          </Reveal>
+          <Reveal delay={100}>
+            <aside className="card p-7" aria-labelledby="glance">
+              <h2 id="glance" className="text-2xl">At a glance</h2>
+              <span className="gold-rule mt-3" aria-hidden="true" />
+              <dl className="mt-5 divide-y divide-line">
+                {about.facts.map((f) => (
+                  <div key={f.label} className="grid gap-1 py-3 sm:grid-cols-[1fr_1.3fr]">
+                    <dt className="text-sm font-semibold text-ink">{f.label}</dt>
+                    <dd className="text-[0.95rem]">{f.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </aside>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section bg-surface/60">
+        <div className="container grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <Reveal>
+            <SectionHeading eyebrow="Our approach" title={about.whyHeading} />
+            <div className="mt-6 space-y-5">
+              {about.whyParagraphs.map((p) => <p key={p}>{p}</p>)}
+            </div>
+            <p className="mt-8 font-display text-2xl italic text-gold-text">{firm.signature}</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <PhotoPlaceholder label="Documents and workspace photo placeholder" icon="ClipboardCheck" className="aspect-[5/4]" />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <Reveal><SectionHeading center eyebrow="What guides us" title="Our Values" /></Reveal>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {about.values.map((v, i) => (
+              <Reveal key={v.title} delay={i * 80}>
+                <div className="card card-hover h-full p-7 text-center">
+                  <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 text-gold-text">
+                    <Icon name={v.icon} className="h-7 w-7" strokeWidth={1.25} />
+                  </span>
+                  <h3 className="mt-5 text-xl">{v.title}</h3>
+                  <p className="mt-2 text-[0.95rem]">{v.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section pt-0">
+        <Reveal className="container">
+          <div className="card mx-auto max-w-4xl border-l-4 border-l-gold p-8 md:p-12">
+            <h2 className="text-3xl">{about.commitment.heading}</h2>
+            <div className="mt-5 space-y-4">
+              {about.commitment.paragraphs.map((p) => <p key={p}>{p}</p>)}
+            </div>
+            <p className="mt-6 font-display text-xl italic text-gold-text">{firm.signature}</p>
+          </div>
+        </Reveal>
+      </section>
+
+      <CtaBand />
+    </>
+  );
+}
