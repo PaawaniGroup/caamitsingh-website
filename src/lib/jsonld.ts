@@ -12,7 +12,7 @@ export function organizationSchema() {
     url: firm.siteUrl,
     slogan: firm.signature,
     ...(real && { telephone: contact.phoneTel, email: contact.email }),
-    address: { "@type": "PostalAddress", addressLocality: firm.city, addressRegion: firm.region, addressCountry: "IN" },
+    address: { "@type": "PostalAddress", streetAddress: contact.streetAddress, postalCode: contact.postalCode, addressLocality: firm.city, addressRegion: firm.region, addressCountry: "IN" },
     areaServed: [{ "@type": "AdministrativeArea", name: firm.region }, "India"],
     numberOfEmployees: { "@type": "QuantitativeValue", value: 43 },
     founder: { "@id": `${firm.siteUrl}/founder#person` },
@@ -29,6 +29,6 @@ export function founderSchema() {
     worksFor: { "@id": `${firm.siteUrl}/#organization` },
     hasCredential: founder.badges,
     knowsAbout: founder.expertise,
-    address: { "@type": "PostalAddress", addressLocality: firm.city, addressRegion: firm.region, addressCountry: "IN" },
+    address: { "@type": "PostalAddress", streetAddress: contact.streetAddress, postalCode: contact.postalCode, addressLocality: firm.city, addressRegion: firm.region, addressCountry: "IN" },
   };
 }

@@ -24,19 +24,22 @@ export const firm = {
 };
 
 export const contact = {
-  /** Phone and email are real; address, hours and map are still placeholders (below). */
+  /** Phone, email and address are real; office hours are still a placeholder (below). */
   isPlaceholder: false,
   phoneDisplay: "+91 79002 55505",
   phoneTel: "+917900255505",
   email: "contact@caamitsingh.com",
   whatsapp: "917900255505", // country code + number, digits only
-  addressLines: ["[Office address line 1]", "[Locality / Landmark]", "Roorkee, Uttarakhand – [PIN code]"], // PLACEHOLDER
+  streetAddress: "Ganga Enclave, Canal Rd, near Ganeshpur, Ganesh Pur",
+  postalCode: "247667",
+  addressLines: ["Ganga Enclave, Canal Rd", "Near Ganeshpur, Ganesh Pur", "Roorkee, Uttarakhand – 247667"],
   hours: [
     { days: "Monday – Saturday", time: "10:00 AM – 6:00 PM" }, // PLACEHOLDER
     { days: "Sunday", time: "Closed" }, // PLACEHOLDER
   ],
-  /** PLACEHOLDER: Google Maps embed URL (Share → Embed a map → copy the src). Leave empty to show the map placeholder. */
-  mapEmbedUrl: "",
+  /** Map query built from the address; swap for a pinned "Share → Embed a map" URL if the pin is slightly off. */
+  mapEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent("Ganga Enclave, Canal Rd, near Ganeshpur, Ganesh Pur, Roorkee, Uttarakhand 247667")}&output=embed`,
+  mapLinkUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Ganga Enclave, Canal Rd, near Ganeshpur, Ganesh Pur, Roorkee, Uttarakhand 247667")}`,
   /** Optional: a form endpoint (e.g. Formspree). When empty the form opens the visitor's email app. */
   formEndpoint: process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT ?? "",
 };

@@ -1,6 +1,6 @@
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
-import { MapPlaceholder } from "@/components/MapPlaceholder";
+import { OfficeMap } from "@/components/OfficeMap";
 import { PageHero } from "@/components/PageHero";
 import { Photo } from "@/components/Photo";
 import { Reveal } from "@/components/Reveal";
@@ -65,7 +65,7 @@ export default function ContactPage() {
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> Message on WhatsApp<span className="sr-only"> (opens in a new tab)</span>
             </a>
 
-            <MapPlaceholder className="h-72" />
+            <OfficeMap className="h-72" />
           </Reveal>
         </div>
       </section>

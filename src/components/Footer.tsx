@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./Logo";
-import { MapPlaceholder } from "./MapPlaceholder";
+import { OfficeMap } from "./OfficeMap";
 import { contact, firm, legalLinks, navLinks, services } from "@/data/site";
 
 export function Footer() {
@@ -65,7 +65,7 @@ export function Footer() {
         </div>
 
         <div className="md:col-span-2 lg:col-span-12">
-          <MapPlaceholder className="h-52" />
+          <OfficeMap className="h-64" onDark />
         </div>
       </div>
 
