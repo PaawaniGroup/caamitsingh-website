@@ -19,7 +19,7 @@ export default function ServicesPage() {
     <>
       <PageHero eyebrow="Practice areas" title={servicesIntro.heading} sub={servicesIntro.subheading} crumbs={[{ label: "Services" }]} />
 
-      <section className="section pb-8">
+      <section className="section pb-12">
         <div className="container">
           <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
             <div className="space-y-5">
@@ -43,37 +43,52 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Stacked service blocks */}
-      <section className="section pt-8">
-        <div className="container space-y-8">
-          {services.map((s) => (
-            <Reveal key={s.slug}>
-              <article id={s.slug} className="card grid gap-8 p-7 md:p-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
-                <div>
-                  <span className="flex h-16 w-16 items-center justify-center rounded-sm bg-navy text-steel">
-                    <Icon name={s.icon} className="h-8 w-8" strokeWidth={1.25} />
+      {/* One full section per practice area: overview on the left, every service with its description on the right */}
+      {services.map((s, idx) => (
+        <section key={s.slug} id={s.slug} className={`section ${idx % 2 === 0 ? "bg-band" : ""}`} aria-labelledby={`${s.slug}-title`}>
+          <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <Reveal>
+              <div className="lg:sticky lg:top-28">
+                <div className="flex items-center gap-4">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-sm bg-navy text-steel">
+                    <Icon name={s.icon} className="h-7 w-7" strokeWidth={1.25} />
                   </span>
-                  <p className="eyebrow mt-6">Practice area {s.number}</p>
-                  <h2 className="mt-2 text-3xl">{s.title}</h2>
-                  <p className="mt-2 text-sm font-medium text-muted">{s.tagline}</p>
-                  <p className="mt-4">{s.intro[0]}</p>
-                  <Link href={`/services/${s.slug}`} className="btn btn-navy mt-6">
-                    Explore More<span className="sr-only"> about {s.title}</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  <p className="eyebrow">Practice area {String(s.number).padStart(2, "0")} of {String(services.length).padStart(2, "0")}</p>
                 </div>
-                <ul className="space-y-3 self-center">
-                  {s.subServices.map((sub) => (
-                    <li key={sub.title} className="flex gap-3 rounded-sm border border-line bg-bg px-5 py-4">
-                      <span className="mt-[0.8em] h-px w-4 shrink-0 bg-brass" aria-hidden="true" />
-                      <span><strong className="font-semibold text-ink">{sub.title}</strong></span>
-                    </li>
+                <h2 id={`${s.slug}-title`} className="mt-5 text-3xl md:text-4xl">{s.title}</h2>
+                <span className="brass-rule mt-4" aria-hidden="true" />
+                <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${s.shortTitle} focus areas`}>
+                  {s.tagline.split(" | ").map((t) => (
+                    <li key={t} className="rounded-sm border border-line bg-surface px-3 py-1 text-sm font-medium text-ink">{t}</li>
                   ))}
                 </ul>
-              </article>
+                <div className="mt-6 space-y-4">
+                  {s.intro.map((p) => <p key={p}>{p}</p>)}
+                </div>
+                <p className="mt-6 border-l-2 border-brass pl-4 font-display text-lg text-ink">{s.objective}</p>
+                <Link href={`/services/${s.slug}`} className="btn btn-navy mt-7">
+                  Explore More<span className="sr-only"> about {s.title}</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
             </Reveal>
-          ))}
-        </div>
-      </section>
+
+            <Reveal delay={100}>
+              <p className="eyebrow">{s.includesLead.replace(/:$/, "")}</p>
+              <ol className="mt-4 divide-y divide-line rounded-sm border border-line bg-surface">
+                {s.subServices.map((sub, i) => (
+                  <li key={sub.title} className="flex gap-4 p-5 md:p-6">
+                    <span className="font-display text-xl text-muted" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <h3 className="text-lg">{sub.title}</h3>
+                      <p className="mt-1 text-[0.95rem]">{sub.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+          </div>
+        </section>
+      ))}
 
       <CtaBand />
     </>

@@ -18,7 +18,7 @@ export function SectionHeading({
   );
 }
 
-/** Service card: icon, title, tagline, three key sub-services. Icon box inverts to navy on hover. */
+/** Service card: icon, title, tagline and every sub-service. Icon box inverts to navy on hover. */
 export function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
@@ -31,7 +31,7 @@ export function ServiceCard({ service }: { service: Service }) {
       <h3 className="mt-6 text-2xl">{service.title}</h3>
       <p className="mt-2 text-sm font-medium text-muted">{service.tagline}</p>
       <ul className="mt-5 space-y-2 text-[0.95rem]">
-        {service.subServices.slice(0, 3).map((s) => (
+        {service.subServices.map((s) => (
           <li key={s.title} className="flex gap-2">
             <span className="mt-[0.7em] h-px w-3 shrink-0 bg-brass" aria-hidden="true" />
             {s.title}
