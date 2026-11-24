@@ -37,9 +37,9 @@ export const contact = {
     { days: "Monday – Saturday", time: "10:30 AM – 7:30 PM" }, // Sunday row below is still unconfirmed
     { days: "Sunday", time: "Closed" }, // PLACEHOLDER
   ],
-  /** Map query built from the address; swap for a pinned "Share → Embed a map" URL if the pin is slightly off. */
-  mapEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent("Ganga Enclave, Canal Rd, near Ganeshpur, Ganesh Pur, Roorkee, Uttarakhand 247667")}&output=embed`,
-  mapLinkUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Ganga Enclave, Canal Rd, near Ganeshpur, Ganesh Pur, Roorkee, Uttarakhand 247667")}`,
+  /** Office pin: the firm's Google Maps listing ("CA Amit Singh"). Coordinates from the shared link. */
+  mapEmbedUrl: "https://www.google.com/maps?q=CA%20Amit%20Singh&ll=29.8605196,77.8813485&z=17&output=embed",
+  mapLinkUrl: "https://maps.app.goo.gl/HgCVZ3WKPvNxJQwC9",
   /** Optional: a form endpoint (e.g. Formspree). When empty the form opens the visitor's email app. */
   formEndpoint: process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT ?? "",
 };
