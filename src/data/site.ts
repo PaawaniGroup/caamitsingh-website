@@ -34,7 +34,7 @@ export const contact = {
   postalCode: "247667",
   addressLines: ["Ganga Enclave, Canal Rd", "Near Ganeshpur, Ganesh Pur", "Roorkee, Uttarakhand – 247667"],
   hours: [
-    { days: "Monday – Saturday", time: "10:00 AM – 6:00 PM" }, // PLACEHOLDER
+    { days: "Monday – Saturday", time: "10:30 AM – 7:30 PM" }, // Sunday row below is still unconfirmed
     { days: "Sunday", time: "Closed" }, // PLACEHOLDER
   ],
   /** Map query built from the address; swap for a pinned "Share → Embed a map" URL if the pin is slightly off. */
