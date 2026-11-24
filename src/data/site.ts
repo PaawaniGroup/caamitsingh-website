@@ -24,12 +24,12 @@ export const firm = {
 };
 
 export const contact = {
-  /** PLACEHOLDER: replace with the firm's real details. */
-  isPlaceholder: true,
-  phoneDisplay: "+91 00000 00000", // PLACEHOLDER
-  phoneTel: "+910000000000", // PLACEHOLDER
-  email: "info@example.com", // PLACEHOLDER
-  whatsapp: "910000000000", // PLACEHOLDER (country code + number, digits only)
+  /** Phone and email are real; address, hours and map are still placeholders (below). */
+  isPlaceholder: false,
+  phoneDisplay: "+91 79002 55505",
+  phoneTel: "+917900255505",
+  email: "contact@caamitsingh.com",
+  whatsapp: "917900255505", // country code + number, digits only
   addressLines: ["[Office address line 1]", "[Locality / Landmark]", "Roorkee, Uttarakhand – [PIN code]"], // PLACEHOLDER
   hours: [
     { days: "Monday – Saturday", time: "10:00 AM – 6:00 PM" }, // PLACEHOLDER
