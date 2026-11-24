@@ -8,7 +8,7 @@ export function FloatingContact() {
       <a
         href={`tel:${contact.phoneTel}`}
         aria-label="Call the office"
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-navy text-steel ring-1 ring-gold/50"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-on-primary ring-1 ring-gold/50"
       >
         <Phone className="h-5 w-5" aria-hidden="true" />
       </a>

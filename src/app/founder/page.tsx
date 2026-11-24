@@ -61,8 +61,8 @@ export default function FounderPage() {
             </Reveal>
 
             <Reveal className="mt-12">
-              <figure className="rounded-sm bg-navy p-8 text-white md:p-10">
-                <figcaption className="eyebrow !text-steel">Professional philosophy</figcaption>
+              <figure className="rounded-sm bg-sage p-8 md:p-10">
+                <figcaption className="eyebrow">Professional philosophy</figcaption>
                 <blockquote className="mt-4 font-display text-xl leading-relaxed md:text-2xl">{founder.philosophy}</blockquote>
               </figure>
             </Reveal>

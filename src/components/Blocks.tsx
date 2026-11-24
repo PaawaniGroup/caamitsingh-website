@@ -6,26 +6,26 @@ import { firm, type Service } from "@/data/site";
 
 /** Eyebrow + serif heading + brass rule. */
 export function SectionHeading({
-  eyebrow, title, intro, center = false, light = false,
-}: { eyebrow?: string; title: string; intro?: string; center?: boolean; light?: boolean }) {
+  eyebrow, title, intro, center = false,
+}: { eyebrow?: string; title: string; intro?: string; center?: boolean }) {
   return (
     <div className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
-      {eyebrow && <p className={`eyebrow ${light ? "!text-steel" : ""}`}>{eyebrow}</p>}
-      <h2 className={`mt-3 text-3xl md:text-4xl ${light ? "!text-white" : ""}`}>{title}</h2>
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+      <h2 className="mt-3 text-3xl md:text-4xl">{title}</h2>
       <span className={`brass-rule mt-5 ${center ? "mx-auto" : ""}`} aria-hidden="true" />
-      {intro && <p className={`mt-5 text-lg ${light ? "text-steel" : ""}`}>{intro}</p>}
+      {intro && <p className="mt-5 text-lg">{intro}</p>}
     </div>
   );
 }
 
-/** Service card: icon, title, tagline and every sub-service. Icon box inverts to navy on hover. */
+/** Service card: icon, title, tagline and every sub-service. Icon box inverts to the primary colour on hover. */
 export function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
       href={`/services/${service.slug}`}
       className="card card-hover group flex h-full flex-col p-8 hover:border-ink/40"
     >
-      <span className="flex h-14 w-14 items-center justify-center rounded-sm border border-line bg-bg text-muted transition-colors duration-300 group-hover:bg-navy group-hover:text-white">
+      <span className="flex h-14 w-14 items-center justify-center rounded-sm border border-line bg-band text-ink transition-colors duration-200 group-hover:bg-primary group-hover:text-on-primary">
         <Icon name={service.icon} className="h-7 w-7" strokeWidth={1.25} />
       </span>
       <h3 className="mt-6 text-2xl">{service.title}</h3>
@@ -45,20 +45,20 @@ export function ServiceCard({ service }: { service: Service }) {
   );
 }
 
-/** Closing navy band carrying the signature line. Informational: links to the contact page only. */
+/** Closing pastel band carrying the signature line. Informational: links to the contact page only. */
 export function CtaBand({ title = "Your Trust. Our Expertise. Your Growth.", text, label = "Get in Touch" }: { title?: string; text?: string; label?: string }) {
   return (
-    <section className="bg-navy-800 py-16 text-white md:py-20">
+    <section className="bg-rose py-16 md:py-20">
       <Reveal className="container grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-16">
         <div>
-          <p className="eyebrow !text-steel">{firm.name}</p>
-          <h2 className="mt-4 max-w-3xl text-balance text-3xl !text-white md:text-4xl">{title}</h2>
+          <p className="eyebrow">{firm.name}</p>
+          <h2 className="mt-4 max-w-3xl text-balance text-3xl md:text-4xl">{title}</h2>
           <span className="brass-rule mt-5" aria-hidden="true" />
-          {text && <p className="mt-5 max-w-2xl text-lg text-steel">{text}</p>}
+          {text && <p className="mt-5 max-w-2xl text-lg text-muted">{text}</p>}
         </div>
         <div className="flex flex-wrap gap-4">
-          <Link href="/contact" className="btn btn-light">{label}</Link>
-          <Link href="/services" className="btn btn-outline-light">Explore Services</Link>
+          <Link href="/contact" className="btn btn-primary">{label}</Link>
+          <Link href="/services" className="btn btn-outline">Explore Services</Link>
         </div>
       </Reveal>
     </section>

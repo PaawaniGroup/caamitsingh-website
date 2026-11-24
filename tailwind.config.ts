@@ -2,7 +2,8 @@ import type { Config } from "tailwindcss";
 
 /**
  * Colour tokens are CSS variables (see globals.css) so light / dark mode switch automatically.
- * `navy`, `steel` (muted text on navy) and `brass` (the single thin accent rule) are fixed.
+ * Pastel palette: soft tints for section backgrounds, one deep sage `primary` for buttons and icon boxes,
+ * and `brass` (the single thin accent rule) is fixed.
  */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
@@ -10,9 +11,13 @@ const config: Config = {
     container: { center: true, padding: { DEFAULT: "1.25rem", md: "2rem" }, screens: { "2xl": "1240px" } },
     extend: {
       colors: {
-        navy: { DEFAULT: "#0B1F3A", 800: "#12284A", 700: "#1B3558" },
-        steel: "#9DB0C8",
-        brass: "#B8923A",
+        brass: "#C2A06A",
+        primary: { DEFAULT: "rgb(var(--primary) / <alpha-value>)", hover: "rgb(var(--primary-hover) / <alpha-value>)" },
+        "on-primary": "rgb(var(--on-primary) / <alpha-value>)",
+        rose: "rgb(var(--rose) / <alpha-value>)",
+        sage: "rgb(var(--sage) / <alpha-value>)",
+        lilac: "rgb(var(--lilac) / <alpha-value>)",
+        butter: "rgb(var(--butter) / <alpha-value>)",
         bg: "rgb(var(--bg) / <alpha-value>)",
         band: "rgb(var(--band) / <alpha-value>)",
         surface: "rgb(var(--surface) / <alpha-value>)",

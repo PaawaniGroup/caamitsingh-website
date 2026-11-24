@@ -100,7 +100,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link href="/contact" className="btn btn-navy hidden px-5 py-2.5 sm:inline-flex">Book a Consultation</Link>
+          <Link href="/contact" className="btn btn-primary hidden px-5 py-2.5 sm:inline-flex">Book a Consultation</Link>
           <button
             type="button"
             className="flex h-11 w-11 items-center justify-center rounded-sm border border-line text-ink lg:hidden"
@@ -125,7 +125,7 @@ export function Header() {
           {services.map((s) => (
             <div key={s.slug}>
               <Link href={`/services/${s.slug}`} className="group flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-navy text-steel">
+                <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-primary text-on-primary">
                   <Icon name={s.icon} className="h-5 w-5" />
                 </span>
                 <span className="font-display text-lg font-semibold text-ink group-hover:text-ink">{s.title}</span>
@@ -196,7 +196,7 @@ export function Header() {
               </Link>
             ),
           )}
-          <Link href="/contact" className="btn btn-navy mt-6">Book a Consultation</Link>
+          <Link href="/contact" className="btn btn-primary mt-6">Book a Consultation</Link>
         </nav>
       </div>
     </header>

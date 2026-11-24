@@ -31,7 +31,7 @@ export default function TeamPage() {
             {teamGroups.map((g) => (
               <li key={g.id}>
                 <a href={`#${g.id}`} className="card card-hover flex h-full items-center gap-4 p-5">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-navy text-steel">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-primary text-on-primary">
                     <Icon name={g.icon} className="h-6 w-6" />
                   </span>
                   <span>

@@ -50,7 +50,7 @@ export default function ServicesPage() {
             <Reveal>
               <div className="lg:sticky lg:top-28">
                 <div className="flex items-center gap-4">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-sm bg-navy text-steel">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-sm bg-primary text-on-primary">
                     <Icon name={s.icon} className="h-7 w-7" strokeWidth={1.25} />
                   </span>
                   <p className="eyebrow">Practice area {String(s.number).padStart(2, "0")} of {String(services.length).padStart(2, "0")}</p>
@@ -66,7 +66,7 @@ export default function ServicesPage() {
                   {s.intro.map((p) => <p key={p}>{p}</p>)}
                 </div>
                 <p className="mt-6 border-l-2 border-brass pl-4 font-display text-lg text-ink">{s.objective}</p>
-                <Link href={`/services/${s.slug}`} className="btn btn-navy mt-7">
+                <Link href={`/services/${s.slug}`} className="btn btn-primary mt-7">
                   Explore More<span className="sr-only"> about {s.title}</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>

@@ -19,32 +19,32 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-navy text-white">
+      <section className="bg-rose">
         <div className="container grid items-center gap-10 pb-14 pt-14 md:pb-20 md:pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
-            <p className="eyebrow !text-steel hero-in">{home.hero.eyebrow}</p>
-            <h1 className="hero-in-2 mt-5 text-4xl !text-white sm:text-5xl">{home.hero.title}</h1>
+            <p className="eyebrow hero-in">{home.hero.eyebrow}</p>
+            <h1 className="hero-in-2 mt-5 text-4xl sm:text-5xl">{home.hero.title}</h1>
             <span className="brass-rule mt-6" aria-hidden="true" />
-            <p className="hero-in-3 mt-6 max-w-2xl text-lg text-steel">{home.hero.sub}</p>
+            <p className="hero-in-3 mt-6 max-w-2xl text-lg text-muted">{home.hero.sub}</p>
             <div className="hero-in-3 mt-9 flex flex-wrap gap-4">
-              <Link href="/services" className="btn btn-light">Explore Services</Link>
-              <Link href="/contact" className="btn btn-outline-light">Book a Consultation</Link>
+              <Link href="/services" className="btn btn-primary">Explore Services</Link>
+              <Link href="/contact" className="btn btn-outline">Book a Consultation</Link>
             </div>
           </div>
           <div className="hero-in-3">
-            <Photo photo={photos.corridor} ratio="aspect-[4/3]" sizes="(min-width: 1024px) 40vw, 100vw" priority className="!border-white/20" />
+            <Photo photo={photos.corridor} ratio="aspect-[4/3]" sizes="(min-width: 1024px) 40vw, 100vw" priority />
           </div>
         </div>
 
         {/* Facts band */}
-        <dl aria-label="The firm at a glance" className="border-t border-white/15 bg-navy-800">
+        <dl aria-label="The firm at a glance" className="border-t border-ink/10 bg-sage">
           <div className="container grid grid-cols-2 md:grid-cols-4">
             {home.stats.map((st, i) => (
-              <div key={st.label} className={`flex flex-col px-4 py-7 text-center md:py-9 ${i % 2 === 1 ? "border-l border-white/15" : ""} ${i > 0 ? "md:border-l md:border-white/15" : ""} ${i > 1 ? "border-t border-white/15 md:border-t-0" : ""}`}>
-                <dd className="order-1 font-display text-3xl font-semibold text-white md:text-4xl">
+              <div key={st.label} className={`flex flex-col px-4 py-7 text-center md:py-9 ${i % 2 === 1 ? "border-l border-ink/10" : ""} ${i > 0 ? "md:border-l md:border-ink/10" : ""} ${i > 1 ? "border-t border-ink/10 md:border-t-0" : ""}`}>
+                <dd className="order-1 font-display text-3xl font-semibold text-ink md:text-4xl">
                   {st.value !== undefined ? <Counter to={st.value} suffix={st.suffix} /> : <span className="text-xl md:text-2xl">{st.text}</span>}
                 </dd>
-                <dt className="order-2 mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-steel">{st.label}</dt>
+                <dt className="order-2 mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-body">{st.label}</dt>
               </div>
             ))}
           </div>
@@ -61,13 +61,13 @@ export default function HomePage() {
             <SectionHeading eyebrow="About the firm" title={`About ${firm.name}`} />
             <p className="mt-6">{about.paragraphs[0]}</p>
             <p className="mt-4">{about.paragraphs[2]}</p>
-            <Link href="/about" className="btn btn-navy mt-8">Read More<span className="sr-only"> about {firm.name}</span> <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <Link href="/about" className="btn btn-primary mt-8">Read More<span className="sr-only"> about {firm.name}</span> <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
           </Reveal>
         </div>
       </section>
 
       {/* SERVICES GRID */}
-      <section className="section bg-band">
+      <section className="section bg-lilac">
         <div className="container">
           <Reveal>
             <SectionHeading center eyebrow="Practice areas" title="Our Professional Services" intro="Financial, taxation, legal and business advisory solutions from one multidisciplinary team." />
@@ -92,7 +92,7 @@ export default function HomePage() {
             {home.whyChooseTiles.map((t, i) => (
               <Reveal key={t.title} delay={(i % 3) * 90}>
                 <div className="card card-hover h-full p-7">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-sm bg-navy text-steel">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-sm bg-primary text-on-primary">
                     <Icon name={t.icon} className="h-6 w-6" />
                   </span>
                   <h3 className="mt-5 text-xl">{t.title}</h3>
@@ -105,41 +105,41 @@ export default function HomePage() {
       </section>
 
       {/* OUR PEOPLE */}
-      <section aria-labelledby="people-heading" className="relative isolate overflow-hidden bg-navy text-white">
+      <section aria-labelledby="people-heading" className="relative isolate overflow-hidden bg-band">
         <Photo photo={photos.team} ratio="" sizes="100vw" className="!absolute !inset-0 !rounded-none !border-0" position="center 40%" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/55 md:via-navy/70 md:to-navy/20" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/90 to-bg/60 md:via-bg/80 md:to-bg/10" aria-hidden="true" />
         <div className="container relative flex min-h-[420px] items-end pb-10 pt-40 md:min-h-[560px] md:pb-14">
           <Reveal className="max-w-3xl">
-            <p className="eyebrow !text-steel">Our people</p>
-            <h2 id="people-heading" className="mt-3 text-3xl !text-white md:text-4xl">43 professionals and staff under one roof</h2>
+            <p className="eyebrow">Our people</p>
+            <h2 id="people-heading" className="mt-3 text-3xl md:text-4xl">43 professionals and staff under one roof</h2>
             <span className="brass-rule mt-5" aria-hidden="true" />
-            <p className="mt-5 text-lg text-steel">Chartered Accountants, Company Secretaries and Advocates working together as one multidisciplinary team.</p>
-            <Link href="/team" className="btn btn-light mt-7">Meet the team <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <p className="mt-5 text-lg text-muted">Chartered Accountants, Company Secretaries and Advocates working together as one multidisciplinary team.</p>
+            <Link href="/team" className="btn btn-primary mt-7">Meet the team <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
           </Reveal>
         </div>
       </section>
 
       {/* FOUNDER SPOTLIGHT */}
-      <section className="section bg-navy text-white">
+      <section className="section bg-sage">
         <div className="container grid items-center gap-12 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-20">
           <Reveal>
-            <Photo photo={photos.founder} ratio="aspect-[4/5]" sizes="(min-width: 1024px) 380px, 90vw" position="0% center" className="mx-auto w-full max-w-sm !border-white/20" />
+            <Photo photo={photos.founder} ratio="aspect-[4/5]" sizes="(min-width: 1024px) 380px, 90vw" position="0% center" className="mx-auto w-full max-w-sm" />
           </Reveal>
           <Reveal delay={100}>
-            <p className="eyebrow !text-steel">Founder &amp; Managing Partner</p>
-            <h2 className="mt-3 text-3xl !text-white md:text-4xl">{founder.name}</h2>
+            <p className="eyebrow">Founder &amp; Managing Partner</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">{founder.name}</h2>
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Credentials">
               {founder.badges.map((b) => (
-                <li key={b} className="rounded-sm border border-white/30 px-4 py-1 text-sm font-semibold text-white">{b}</li>
+                <li key={b} className="rounded-sm border border-ink/25 px-4 py-1 text-sm font-semibold text-ink">{b}</li>
               ))}
             </ul>
             <figure className="mt-8 border-l-2 border-line pl-6">
-              <figcaption className="eyebrow !text-steel">Professional philosophy</figcaption>
-              <blockquote className="mt-3 font-display text-xl leading-relaxed text-white md:text-2xl">
+              <figcaption className="eyebrow">Professional philosophy</figcaption>
+              <blockquote className="mt-3 font-display text-xl leading-relaxed text-ink md:text-2xl">
                 {founder.philosophy}
               </blockquote>
             </figure>
-            <Link href="/founder" className="btn btn-light mt-9">View full profile <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <Link href="/founder" className="btn btn-primary mt-9">View full profile <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
           </Reveal>
         </div>
       </section>

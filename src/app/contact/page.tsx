@@ -36,7 +36,7 @@ export default function ContactPage() {
             <div className="card divide-y divide-line">
               {items.map(({ icon: I, label, body }) => (
                 <div key={label} className="flex gap-4 p-6">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-navy text-steel"><I className="h-5 w-5" aria-hidden="true" /></span>
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-primary text-on-primary"><I className="h-5 w-5" aria-hidden="true" /></span>
                   <div>
                     <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-ink">{label}</h3>
                     <div className="mt-1 text-[0.98rem]">{body}</div>
@@ -44,7 +44,7 @@ export default function ContactPage() {
                 </div>
               ))}
               <div className="flex gap-4 p-6">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-navy text-steel"><Clock className="h-5 w-5" aria-hidden="true" /></span>
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-primary text-on-primary"><Clock className="h-5 w-5" aria-hidden="true" /></span>
                 <div className="w-full">
                   <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-ink">Office hours</h3>
                   <ul className="mt-1 space-y-1 text-[0.98rem]">

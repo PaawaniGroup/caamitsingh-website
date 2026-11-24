@@ -151,7 +151,7 @@ export function ContactForm() {
           Something went wrong while sending. Please try again, or contact the office directly.
         </p>
       )}
-      <button type="submit" disabled={status === "sending"} className="btn btn-navy w-full disabled:opacity-60 sm:w-auto">
+      <button type="submit" disabled={status === "sending"} className="btn btn-primary w-full disabled:opacity-60 sm:w-auto">
         {status === "sending" ? "Sending…" : "Submit Enquiry"}
       </button>
     </form>

@@ -64,13 +64,13 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
             </ol>
 
             <Reveal className="mt-10">
-              <p className="rounded-sm border-l-4 border-line bg-navy p-7 font-display text-xl leading-relaxed text-white md:p-9 md:text-2xl">
+              <p className="rounded-sm border-l-4 border-brass bg-sage p-7 font-display text-xl leading-relaxed text-ink md:p-9 md:text-2xl">
                 {service.objective}
               </p>
             </Reveal>
 
             <Reveal className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-8">
-              <Link href="/contact" className="btn btn-navy">Contact the Firm <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link href="/contact" className="btn btn-primary">Contact the Firm <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
               <Link href={`/services/${next.slug}`} className="text-sm font-semibold text-ink hover:text-ink">
                 Next: {next.shortTitle} →
               </Link>
@@ -93,15 +93,15 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
               </ul>
             </nav>
 
-            <div className="rounded-sm bg-navy p-6 text-white">
-              <h2 className="text-xl !text-white">Contact the Office</h2>
+            <div className="rounded-sm bg-rose p-6">
+              <h2 className="text-xl">Contact the Office</h2>
               <span className="brass-rule mt-3" aria-hidden="true" />
               <ul className="mt-5 space-y-3 text-[0.95rem]">
-                <li><a href={`tel:${contact.phoneTel}`} className="flex min-h-[44px] items-center gap-3 hover:text-white"><Phone className="h-4 w-4 text-steel" aria-hidden="true" /> {contact.phoneDisplay}</a></li>
-                <li><a href={`mailto:${contact.email}`} className="flex min-h-[44px] items-center gap-3 break-all hover:text-white"><Mail className="h-4 w-4 shrink-0 text-steel" aria-hidden="true" /> {contact.email}</a></li>
-                <li><a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center gap-3 hover:text-white"><MessageCircle className="h-4 w-4 text-steel" aria-hidden="true" /> WhatsApp</a></li>
+                <li><a href={`tel:${contact.phoneTel}`} className="flex min-h-[44px] items-center gap-3 hover:text-ink hover:underline"><Phone className="h-4 w-4 text-muted" aria-hidden="true" /> {contact.phoneDisplay}</a></li>
+                <li><a href={`mailto:${contact.email}`} className="flex min-h-[44px] items-center gap-3 break-all hover:text-ink hover:underline"><Mail className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" /> {contact.email}</a></li>
+                <li><a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center gap-3 hover:text-ink hover:underline"><MessageCircle className="h-4 w-4 text-muted" aria-hidden="true" /> WhatsApp</a></li>
               </ul>
-              <Link href="/contact" className="btn btn-light mt-5 w-full">Send an Enquiry</Link>
+              <Link href="/contact" className="btn btn-primary mt-5 w-full">Send an Enquiry</Link>
             </div>
           </aside>
         </div>

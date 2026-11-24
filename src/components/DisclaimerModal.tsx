@@ -51,7 +51,7 @@ export function DisclaimerModal() {
 
   if (!open || exempt) return null;
   return (
-    <div className="disclaimer-root fixed inset-0 z-[100] items-end justify-center bg-navy/80 p-3 backdrop-blur-sm sm:items-center sm:p-6">
+    <div className="disclaimer-root fixed inset-0 z-[100] items-end justify-center bg-black/55 p-3 backdrop-blur-sm sm:items-center sm:p-6">
       <div
         ref={dialogRef}
         role="dialog"
@@ -66,14 +66,14 @@ export function DisclaimerModal() {
         <ol className="mt-4 space-y-3 text-[0.95rem]">
           {disclaimer.points.map((p, i) => (
             <li key={i} className="flex gap-3">
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-navy text-xs font-semibold text-steel">{i + 1}</span>
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-primary text-xs font-semibold text-on-primary">{i + 1}</span>
               <span>{p}</span>
             </li>
           ))}
         </ol>
         <div className="mt-8 flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
           <Link href="/disclaimer" className="text-sm font-medium text-muted underline underline-offset-4">Read the full disclaimer</Link>
-          <button ref={agreeRef} type="button" onClick={accept} className="btn btn-navy sm:min-w-[160px]">I Agree</button>
+          <button ref={agreeRef} type="button" onClick={accept} className="btn btn-primary sm:min-w-[160px]">I Agree</button>
         </div>
       </div>
     </div>
